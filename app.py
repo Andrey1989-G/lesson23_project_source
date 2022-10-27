@@ -29,7 +29,7 @@ def perform_query():
     if cmd1 and cmd2 not in list_command:
         return BadRequest, 400
 
-    res1 = get_commands(cmd1, value1, DATA_DIR)
+    res1 = get_commands(cmd1, value1, "data/apache_logs.txt")
     res2 = get_commands(cmd2, value2, res1)
 
     return jsonify(list(res2))
