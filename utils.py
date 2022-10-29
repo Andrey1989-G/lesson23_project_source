@@ -1,3 +1,6 @@
+import itertools
+
+
 def open_files(path: str):
     """Открытие файла"""
     try:
@@ -8,7 +11,7 @@ def open_files(path: str):
     except FileNotFoundError:
         print('файл не найден')
 
-def get_commands(command: str, value, data):
+def get_commands(command, value, data):
     """Работаем с командами"""
     if command == 'filter':
         res = filter(lambda x: value in x, data)
@@ -18,7 +21,8 @@ def get_commands(command: str, value, data):
         res = set(data)
     elif command == 'sort':
         res = sorted(data) if value == 'asc' else sorted(data, reverse=True)
+    elif command == 'limit':
+        res = itertools.islice(data, int(value))
 
     return res
-
-# print(get_commands('sort', 'asc', open_files('data/apache_logs.txt')))
+print(list(get_commands('unique', None, open_files('data/test.txt'))))
