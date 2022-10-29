@@ -25,4 +25,4 @@ def get_commands(command, value, data):
         res = itertools.islice(data, int(value))
 
     return res
-print(list(get_commands('unique', None, open_files('data/test.txt'))))
+# print(list(get_commands('unique', None, open_files('data/test.txt'))))
